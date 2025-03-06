@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class = "col-lg-12 col-md-12 col-sm-12">
+      <h1>Welcome to the Dhaka City All persons Information</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Father name</th>
+            <th scope="col">Mother name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Age</th>
+            <th scope="col">Blood group</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for people_k in people_key %}
+          <tr>
+            <td>{{people_k.id}}</td>
+            <td>{{people_k.Full_name}}</td>
+            <td>{{people_k.Father_name}}</td>
+            <td>{{people_k.Mother_name}}</td>
+            <td>{{people_k.address}}</td>
+            <td>{{people_k.Age}}</td>
+            <td>{{people_k.Blood_group}}</td>
+            <td><a class="btn btn-primary" href="{% url 'update_person_u' people_k.id %}">Update</a></td>
+            <td><a class="btn btn-danger" href="{% url 'delete_person_u' people_k.id %}">Delete</a></td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
